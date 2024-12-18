@@ -85,16 +85,7 @@ file(GLOB UNITTEST_SOURCES
     ${SOURCES})
 
 #pybind11
-if (PYBIND11_DIR)
-    set(PYBIND11_ROOT_DIR ${PYBIND11_DIR})
-    message(STATUS "Use pybind11: ${PYBIND11_ROOT_DIR}")
-else()
-    set(PYBIND11_ROOT_DIR $ENV{PYBIND11_DIR})
-    message(STATUS "Use system pybind11: ${PYBIND11_ROOT_DIR}")
-endif()
-unset(PYBIND11_DIR CACHE)
-
-add_subdirectory(${PYBIND11_ROOT_DIR} "./pybind11")
+find_package(pybind11 CONFIG)
 
 # Python
 if (NOT PYTHON_INCLUDE_DIR OR NOT PYTHON_LIBRARIES)
